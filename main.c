@@ -49,14 +49,22 @@ void outportb (unsigned short _port, unsigned char _data)
 int main()
 {
 	init_video();
+	puts("\n\n* Pawan OS \n\n");
 	gdt_install();
 	idt_install();
 	isr_install();
-	char *st = "Hello World";
-	puts(st);
+	irq_install();
+	__asm__ __volatile__ ("sti");
+	timer_install();
+	/* for testing idt, division by zero error
 	int i=5;
-	putch(i/5);
-	puts("bye");
+	putch(i/0);
+	*/
+	/* delay 
+	puts("Waiting for 5 seconds");
+	delay(5);
+	puts("\n5 seconds over");
+	*/
     for (;;);
     return 0;
 }

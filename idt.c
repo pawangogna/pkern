@@ -28,16 +28,7 @@ void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, uns
 	idt[num].flags = flags;
 	idt[num].sel = sel;
 	idt[num].base_lo = ( base & 0xFFFF );
-	idt[num].base_hi = ( ( base >> 16 ) & 0xFFFF );
-	
-	puts("\n**");
-	
-	char s = (char )(base >> 16);
-	s = s+43;
-	putch(s);
-	s = (char )idt[num].base_lo;
-	//putch(s);
-	
+	idt[num].base_hi = ( ( base >> 16 ) & 0xFFFF );	
 }
 
 void idt_install()

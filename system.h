@@ -1,8 +1,6 @@
 #ifndef __SYSTEM_H
 #define __SYSTEM_H
 
-
-
 extern unsigned char *memcpy(void *dest,void *src, int count);
 extern unsigned char *memset(unsigned char *dest, unsigned char val, int count);
 extern unsigned short *memsetw(unsigned short *dest, unsigned short val, int count);
@@ -24,11 +22,26 @@ struct regs
     unsigned int eip, cs, eflags, useresp, ss;   /* pushed by the processor automatically */ 
 };
 
+//gdt
 extern void gdt_install();
 
+//idt
 extern void idt_install();
 extern void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags);
+
+//isr
 extern void isr_install();
+
+//irq
+extern void irq_install();
+extern void irq_handler(struct regs *r);
+extern void irq_install_handler(int irq, void (*handler)(struct regs *r));
+void irq_uninstall_handler(int irq);
+
+//pit
+extern void delay(int ticks);
+extern void timer_handler(struct regs *r);
+extern void timer_install();
 
 #endif
 		
