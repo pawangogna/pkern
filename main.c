@@ -55,6 +55,7 @@ int main()
 	isr_install();
 	irq_install();
 	__asm__ __volatile__ ("sti");
+	kb_install();
 	timer_install();
 	/* for testing idt, division by zero error
 	int i=5;

@@ -54,7 +54,12 @@ void putch(unsigned char c)
 	//backspace
     if(c == 0x08)
     {
-        if(csr_x != 0) csr_x--;
+        if(csr_x != 0) 
+        {
+			csr_x--;
+			where = textmemptr + (csr_y * 80 + csr_x);
+			*where = 0x20 | att;
+		}
     }
     //tab
     else if(c == 0x09)

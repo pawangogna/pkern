@@ -43,5 +43,8 @@ extern void delay(int ticks);
 extern void timer_handler(struct regs *r);
 extern void timer_install();
 
+//keyboard
+extern void kb_install();
+
 #endif
 		

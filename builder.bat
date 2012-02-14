@@ -7,5 +7,6 @@ gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc
 gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin  -c -o isr.o isr.c
 gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin  -c -o irq.o irq.c
 gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin  -c -o pit.o pit.c
-ld -T link.ld -o kernel.bin start.o main.o screen.o gdt.o idt.o isr.o irq.o pit.o
+gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin  -c -o kb.o kb.c
+ld -T link.ld -o kernel.bin start.o main.o screen.o gdt.o idt.o isr.o irq.o pit.o kb.o
 echo Done!
